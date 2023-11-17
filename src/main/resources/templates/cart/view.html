@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <main>
+        <div th:fragment="shopping">
+            <div>Giỏ hàng</div>
+            <a th:href="@{/foodshop/product/}">về lại giỏ hàng</a>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in cart.items">
+                    <tr>
+                        <td>{{item.image}}</td>
+                        <td>{{item.name}}</td>
+                        <td>
+                            <input ng-change="cart.saveToLocalStorage()" id="qty" ng-model="item.qty" value="1" min="1"
+                                max="{{item.quantity}}" type="number" required="required">
+                        </td>
+                        <td>{{item.price * item.qty | currency:"":"0"}} đ</td>
+                        <td>
+                            <button ng-click="cart.remove(item.productid)">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <div>Tổng Tiền: {{cart.amount | currency:"":"0"}} đ</div>
+                </tfoot>
+            </table>
+            <div>
+                <button ng-click="cart.clear()">clear</button>
+                <button>
+                    <a th:href="@{/order/checkout/}">Đặt hàng</a> 
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

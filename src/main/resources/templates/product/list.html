@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<main>
+		<div class="">Số mặt hàng trong giỏ: {{cart.count}}</div>
+		<div class="">Tổng tiền mặt hàng trong giỏ: {{cart.amount | currency:"":"0"}}</div>
+		<div><a th:href="@{/cart/view}">Chi tiết giỏ hàng</a></div>
+		<div class="list-cart">
+			<ul ng-repeat="item in cart.items">
+				<li>Hình:  {{item.image}}</li>
+				<li>Tên:<a th:href="@{/foodshop/product/detail/{{item.productid}}}">{{item.name}}</a> </li>
+				<li>Giá: {{item.price}}</li>
+				<li>Số lượng: {{item.qty}}</li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="card" th:each="p : ${item}" th:object="${p}">
+				<img th:src="@{|/assets/images/*{image}|}" alt="" class="images">
+
+				<a th:href="@{|/foodshop/product/detail/*{productid}}">
+					<div class="title-product" th:text="*{name}"></div>
+				</a>
+
+				<div class="price-product">[[*{price}]] / [[*{Numbermass}]] [[*{mass}]]</div>
+				<div class="type-product">[[*{category.id}]]</div>
+				<div class="amount-product">[[*{quantity}]]</div>
+				<div class="button-group_action">
+					<button th:attr="ng-click=@{|cart.add(*{productid})|}">add to cart</button>
+					<button>Mua ngay</button>
+				</div>
+			</div>
+		</div>
+
+</body>
+
+</html>
