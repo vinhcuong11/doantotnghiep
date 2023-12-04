@@ -1,0 +1,24 @@
+version: '3.8'
+## MYSQL config
+services:
+  mysql-demo:
+    image: mysql:8.0.33
+    container_name: mysql-demo
+    ports:
+      - "3305:3306"
+    restart: always
+    volumes:
+      - /home/hoanghai/Mysql/foodshopdemo:/var/lib/mysql
+      - /home/hoanghai/Downloads/duantndemo-3/database:/docker-entrypoint-initdb.d
+    networks:
+      backend:
+    environment:
+      MYSQL_USER: hainh
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: foodshopdemo
+
+## create network
+networks:
+  backend:
+    name: springboot-app-network

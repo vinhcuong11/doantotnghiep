@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<main>
+    <!--breadcrumb section start-->
+    <div class="gstore-breadcrumb position-relative z-1 overflow-hidden mt--50">
+        <img th:src="@{/img/shapes/bg-shape-6.png}" alt="bg-shape"
+             class="position-absolute start-0 z--1 w-100 bg-shape">
+        <img th:src="@{/img/shapes/pata-xs.svg}" alt="pata" class="position-absolute pata-xs z--1 vector-shape">
+        <img th:src="@{/img/shapes/onion.png}" alt="onion"
+             class="position-absolute z--1 onion start-0 top-0 vector-shape">
+        <img th:src="@{/img/shapes/frame-circle.svg}" alt="frame circle"
+             class="position-absolute z--1 frame-circle vector-shape"> <img th:src="@{/img/shapes/leaf.svg}"
+                                                                            alt="leaf"
+                                                                            class="position-absolute z--1 leaf vector-shape">
+        <img
+                th:src="@{/img/shapes/garlic-white.png}" alt="garlic"
+                class="position-absolute z--1 garlic vector-shape"> <img th:src="@{/img/shapes/roll-1.png}" alt="roll"
+                                                                         class="position-absolute z--1 roll vector-shape">
+        <img th:src="@{/img/shapes/roll-2.png}" alt="roll"
+             class="position-absolute z--1 roll-2 vector-shape"> <img th:src="@{/img/shapes/pata-xs.svg}" alt="roll"
+                                                                      class="position-absolute z--1 pata-xs-2 vector-shape">
+        <img th:src="@{/img/shapes/tomato-half.svg}"
+             alt="tomato" class="position-absolute z--1 tomato-half vector-shape"> <img
+            th:src="@{/img/shapes/tomato-slice.svg}" alt="tomato"
+            class="position-absolute z--1 tomato-slice vector-shape"> <img th:src="@{/img/shapes/cauliflower.png}"
+                                                                           alt="tomato"
+                                                                           class="position-absolute z--1 cauliflower vector-shape">
+        <img th:src="@{/img/shapes/leaf-gray.png}" alt="tomato"
+             class="position-absolute z--1 leaf-gray vector-shape">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="mb-2 text-center">Wishlist Page</h2>
+                        <nav>
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item fw-bold" aria-current="page"><a href="index-2.html">Home</a>
+                                </li>
+                                <li class="breadcrumb-item fw-bold" aria-current="page">Page</li>
+                                <li class="breadcrumb-item fw-bold" aria-current="page">Wishlist Page</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumb section end-->
+
+
+    <!--wishlist section start-->
+    <section class="wishlist-section ptb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="wishlist-table bg-white">
+                        <table class="w-100">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Image</th>
+                                <th class="text-center">Product Name</th>
+                                <th class="text-center">Stock Status</th>
+                                <th class="text-center">Unit Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-center thumbnail">
+                                    <img src="/assets/img/products/thumb-sm-1.png" alt="product-thumb"
+                                         class="img-fluid">
+                                </td>
+                                <td>
+                                    <span class="fw-bold text-secondary fs-xs">Vegetable</span>
+                                    <h6 class="mb-1 mt-1">Three Carrot Vegetables Peruvian Cuisine</h6>
+                                    <div class="star-rating">
+                                        <ul class="rating-fields fs-xs text-warning d-inline-flex align-items-center">
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+                                        </ul>
+                                        <span class="fs-xs">( 3 reviews )</span>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="stock-btn text-dark fw-bold fs-xxs d-inline-block rounded-pill">In Stock</span>
+                                </td>
+                                <td class="text-end">
+                                    <span class="price fw-bold text-dark">$918.00</span>
+                                    <a href="#" class="btn btn-secondary btn-sm ms-5 rounded-1">Add to Cart</a>
+                                    <a href="#" class="close-btn ms-3"><i class="fas fa-close"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center thumbnail">
+                                    <img src="/assets/img/products/thumb-sm-1.png" alt="product-thumb"
+                                         class="img-fluid">
+                                </td>
+                                <td>
+                                    <span class="fw-bold text-secondary fs-xs">Vegetable</span>
+                                    <h6 class="mb-1 mt-1">Three Carrot Vegetables Peruvian Cuisine</h6>
+                                    <div class="star-rating">
+                                        <ul class="rating-fields fs-xs text-warning d-inline-flex align-items-center">
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+                                        </ul>
+                                        <span class="fs-xs">( 3 reviews )</span>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="stock-btn text-dark fw-bold fs-xxs d-inline-block rounded-pill">In Stock</span>
+                                </td>
+                                <td class="text-end">
+                                    <span class="price fw-bold text-dark">$918.00</span>
+                                    <a href="#" class="btn btn-secondary btn-sm ms-5 rounded-1">Add to Cart</a>
+                                    <a href="#" class="close-btn ms-3"><i class="fas fa-close"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center thumbnail">
+                                    <img src="/assets/img/products/thumb-sm-1.png" alt="product-thumb"
+                                         class="img-fluid">
+                                </td>
+                                <td>
+                                    <span class="fw-bold text-secondary fs-xs">Vegetable</span>
+                                    <h6 class="mb-1 mt-1">Three Carrot Vegetables Peruvian Cuisine</h6>
+                                    <div class="star-rating">
+                                        <ul class="rating-fields fs-xs text-warning d-inline-flex align-items-center">
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+                                        </ul>
+                                        <span class="fs-xs">( 3 reviews )</span>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="stock-btn text-dark fw-bold fs-xxs d-inline-block rounded-pill">In Stock</span>
+                                </td>
+                                <td class="text-end">
+                                    <span class="price fw-bold text-dark">$918.00</span>
+                                    <a href="#" class="btn btn-secondary btn-sm ms-5 rounded-1">Add to Cart</a>
+                                    <a href="#" class="close-btn ms-3"><i class="fas fa-close"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center thumbnail">
+                                    <img src="/assets/img/products/thumb-sm-1.png" alt="product-thumb"
+                                         class="img-fluid">
+                                </td>
+                                <td>
+                                    <span class="fw-bold text-secondary fs-xs">Vegetable</span>
+                                    <h6 class="mb-1 mt-1">Three Carrot Vegetables Peruvian Cuisine</h6>
+                                    <div class="star-rating">
+                                        <ul class="rating-fields fs-xs text-warning d-inline-flex align-items-center">
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+                                        </ul>
+                                        <span class="fs-xs">( 3 reviews )</span>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="stock-btn text-dark fw-bold fs-xxs d-inline-block rounded-pill">In Stock</span>
+                                </td>
+                                <td class="text-end">
+                                    <span class="price fw-bold text-dark">$918.00</span>
+                                    <a href="#" class="btn btn-secondary btn-sm ms-5 rounded-1">Add to Cart</a>
+                                    <a href="#" class="close-btn ms-3"><i class="fas fa-close"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center thumbnail">
+                                    <img src="/assets/img/products/thumb-sm-1.png" alt="product-thumb"
+                                         class="img-fluid">
+                                </td>
+                                <td>
+                                    <span class="fw-bold text-secondary fs-xs">Vegetable</span>
+                                    <h6 class="mb-1 mt-1">Three Carrot Vegetables Peruvian Cuisine</h6>
+                                    <div class="star-rating">
+                                        <ul class="rating-fields fs-xs text-warning d-inline-flex align-items-center">
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+                                        </ul>
+                                        <span class="fs-xs">( 3 reviews )</span>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="stock-btn text-dark fw-bold fs-xxs d-inline-block rounded-pill">In Stock</span>
+                                </td>
+                                <td class="text-end">
+                                    <span class="price fw-bold text-dark">$918.00</span>
+                                    <a href="#" class="btn btn-secondary btn-sm ms-5 rounded-1">Add to Cart</a>
+                                    <a href="#" class="close-btn ms-3"><i class="fas fa-close"></i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+
+</html>
