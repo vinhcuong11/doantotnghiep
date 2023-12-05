@@ -8,17 +8,17 @@ services:
       - "3305:3306"
     restart: always
     volumes:
-      - /home/hoanghai/Mysql/foodshopdemo:/var/lib/mysql
-      - /home/hoanghai/Downloads/duantndemo-3/database:/docker-entrypoint-initdb.d
+      - /Users/duyphuong/Desktop/HaiNH/database/mysql/foodshopdemo:/var/lib/mysql
+      - /Users/duyphuong/Desktop/HaiNH/Java/doantotnghiep/database:/docker-entrypoint-initdb.d
     networks:
       backend:
     environment:
       MYSQL_USER: hainh
       MYSQL_PASSWORD: 1234
       MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: foodshopdemo
+      MYSQL_DATABASE: WatchShop
 
 ## create network
 networks:
   backend:
-    name: springboot-app-network
+    name: foodshopdemo
