@@ -3,6 +3,7 @@ package com.poly.controller.client;
 import com.poly.common.SessionConstant;
 import com.poly.entity.Accounts;
 import com.poly.service.AccountService;
+import com.poly.service.SessionDAO;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,8 @@ import org.slf4j.LoggerFactory;
 
 @RequestMapping("/foodshop/login")
 public class LoginController {
-
+    @Autowired
+    SessionDAO session;
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
     @Autowired
     private AccountService accountServ;
@@ -36,14 +38,13 @@ public class LoginController {
     }
 
     @PostMapping("/login-user")
-    public String doPostLogin(@ModelAttribute("userRequest") Accounts userRequest,
-                              HttpSession session) {
+    public String doPostLogin(@ModelAttribute("userRequest") Accounts userRequest) {
         try {
             Accounts userResponse = accountServ.getUser(userRequest.getUsername());
             if (userResponse.getName().isEmpty()) {
                 return "redirect:/foodshop/login";
             } else if (userResponse.getPassword().equals(userRequest.getPassword())) {
-                session.setAttribute(SessionConstant.CURRENT_USER, userResponse);
+                session.set("user", userResponse);
                 return "redirect:/foodshop";
             } else {
                 return "redirect:/foodshop/login";
