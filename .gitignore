@@ -1,0 +1,8 @@
+.idea/
+.idea/workspace.xml
+.idea/encodings.xml
+.idea/misc.xml
+target/
+out/
+web/
+META-INF/

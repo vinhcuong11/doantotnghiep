@@ -12,4 +12,8 @@ public interface AccountDAO extends JpaRepository<Accounts, Integer>{
 	@Query(value="select a.user_id  from authori a where a.role_id in ('1')", nativeQuery = true)
 	List<Accounts> getAdministartors();
 
+	Accounts findUserByUsername(String username);
+
+
+
 }
