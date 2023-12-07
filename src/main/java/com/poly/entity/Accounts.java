@@ -25,4 +25,16 @@ public class Accounts {
 	@Column(name = "phone_number")
 	Integer phoneNumber;
 
+	@Override
+	public String toString() {
+		return "Accounts{" +
+				"accid=" + accid +
+				", name='" + name + '\'' +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", email='" + email + '\'' +
+				", image='" + image + '\'' +
+				", phoneNumber=" + phoneNumber +
+				'}';
+	}
 }
