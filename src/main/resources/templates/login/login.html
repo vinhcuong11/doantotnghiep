@@ -34,7 +34,9 @@
 <!--preloader end-->
 <!--main content wrapper start-->
 <div class="main-wrapper">
-
+    <div class="alert alert-danger text-center" role="alert"
+         th:if="${message}">[[${message}]]
+    </div>
     <!--login section start-->
     <section class="login-section py-5">
         <div class="container">
@@ -54,14 +56,16 @@
                             <div class="col-sm-12">
                                 <div class="input-field">
                                     <label class="fw-bold text-dark fs-sm mb-1">Username</label>
-                                    <input type="text" placeholder="Enter your username" id="username" name="login" class="theme-input" th:field="*{username}">
+                                    <input type="text" placeholder="Enter your username" id="username" name="login"
+                                           class="theme-input" th:field="*{username}">
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="input-field check-password">
                                     <label class="fw-bold text-dark fs-sm mb-1">Password</label>
                                     <div class="check-password">
-                                        <input type="password" id="password" placeholder="Password" name="login"  class="theme-input" th:field="*{password}">
+                                        <input type="password" id="password" placeholder="Password" name="login"
+                                               class="theme-input" th:field="*{password}">
                                         <span class="eye eye-icon"><i class="fa-solid fa-eye"></i></span>
                                         <span class="eye eye-slash"><i class="fa-solid fa-eye-slash"></i></span>
                                     </div>
@@ -80,8 +84,8 @@
                         </div>
                         <div class="row g-4 mt-4">
                             <div class="col-sm-6">
-<!--                                <button type="submit" class="btn btn-primary w-100">Sign In</button>-->
-                                <input type="submit" class="btn btn-primary w-100" value="Log In" />
+                                <!--                                <button type="submit" class="btn btn-primary w-100">Sign In</button>-->
+                                <input type="submit" class="btn btn-primary w-100" value="Log In"/>
                             </div>
                             <div class="col-sm-6">
                                 <a href="#" class="btn btn-outline google-btn w-100">
@@ -89,16 +93,39 @@
                                 </a>
                             </div>
                         </div>
-                        <p class="mb-0 fs-xs mt-4">Don't have an Account? <a th:href="@{/foodshop/login/sign-up}">Sign Up</a>
+                        <p class="mb-0 fs-xs mt-4">Don't have an Account? <a th:href="@{/foodshop/login/sign-up}">Sign
+                            Up</a>
                         </p>
                     </form>
                 </div>
             </div>
         </div>
+
     </section>
     <!--login section end-->
 
 </div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Thông báo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="popup_noti">
+                Đăng ký tài khoản thành công
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" id="btn-confirm" class="btn btn-default min-w-120" data-bs-dismiss="modal"
+                        aria-label="Close">
+                    Thoát
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--main content wrapper end-->
 
 
@@ -128,3 +155,10 @@
 
 <!-- Mirrored from grostore-html.themetags.com/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Nov 2023 13:21:23 GMT -->
 </html>
+<script type="text/javascript">
+    // var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+    // myModal.show();
+    // $('#btn-confirm').on('click', function () {
+    //     // window.location.href = "/ibk/vn/regdeb/ext/index.jsp";
+    // });
+</script>

@@ -4,7 +4,6 @@ import com.poly.common.SessionConstant;
 import com.poly.entity.Accounts;
 import com.poly.service.AccountService;
 import com.poly.service.SessionDAO;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +26,9 @@ public class LoginController {
 
     @GetMapping("")
     public String index(Model model) {
+        if(session.get(SessionConstant.ERROR)!=null){
+            model.addAttribute("message", "Sai mật khẩu hoặc tài khoản");
+        }
         model.addAttribute("userRequest", new Accounts());
         return "login/login";
     }
@@ -42,11 +44,14 @@ public class LoginController {
         try {
             Accounts userResponse = accountServ.getUser(userRequest.getUsername());
             if (userResponse.getName().isEmpty()) {
+                session.set(SessionConstant.ERROR, SessionConstant.ERROR_CODE);
                 return "redirect:/foodshop/login";
             } else if (userResponse.getPassword().equals(userRequest.getPassword())) {
                 session.set("user", userResponse);
+                session.set(SessionConstant.ERROR, null);
                 return "redirect:/foodshop";
             } else {
+                session.set(SessionConstant.ERROR, SessionConstant.ERROR_CODE);
                 return "redirect:/foodshop/login";
             }
         } catch (Exception ex) {
@@ -58,17 +63,17 @@ public class LoginController {
     @PostMapping("/register")
     public String doPostRegister(@ModelAttribute("userRequest") Accounts userRequest) {
         try {
-            LOGGER.info("Username:"+userRequest.getUsername());
+            LOGGER.info("com/poly/controller/client/LoginController.java - Username:"+userRequest.getUsername());
             Accounts userResponse = accountServ.getUser(userRequest.getUsername());
-            LOGGER.info("userResponse"+userResponse);
+            LOGGER.info("com/poly/controller/client/LoginController.java - userResponse"+userResponse);
             if(userResponse==null){
-                LOGGER.info("Check Empty");
+                LOGGER.info("com/poly/controller/client/LoginController.java -Check Empty");
                 accountServ.SaveAccount(userRequest);
                 return "redirect:/foodshop/login";
             }
             return "redirect:/foodshop/login/sign-up";
         } catch (Exception e) {
-            LOGGER.error("Exception: "+e);
+            LOGGER.error("com/poly/controller/client/LoginController.java - Exception: "+e);
             return "redirect:/foodshop/login/sign-up";
         }
     }
