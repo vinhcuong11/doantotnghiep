@@ -1,8 +1,10 @@
 package com.poly.entity;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "account", schema = "foodshopdemo", catalog = "")
@@ -20,6 +22,12 @@ public class Accounts {
 	@Column(name = "phone_number")
 	Integer phoneNumber;
 
+	// Khoa Ngoai
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "roleid", referencedColumnName = "id")
+	@JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
+	private Role role;
+
 	@Override
 	public String toString() {
 		return "Accounts{" +
@@ -30,6 +38,9 @@ public class Accounts {
 				", email='" + email + '\'' +
 				", image='" + image + '\'' +
 				", phoneNumber=" + phoneNumber +
+				", role=" + role +
 				'}';
 	}
 }
+
+
