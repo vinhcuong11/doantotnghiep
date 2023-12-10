@@ -1,5 +1,6 @@
 package com.poly.controller.client;
 
+import com.poly.common.SessionConstant;
 import com.poly.entity.Accounts;
 import com.poly.service.SessionDAO;
 import org.slf4j.Logger;
@@ -20,8 +21,8 @@ public class PageContoller {
 
 	@GetMapping("")
 	public String goHome(Model model) {
-		Accounts khachHang = (Accounts) session.get("user");
-		LOGGER.info("khachHang: "+khachHang);
+		Accounts khachHang = (Accounts) session.get(SessionConstant.CURRENT_USER);
+		LOGGER.info("com/poly/controller/client/PageContoller.java - khachHang: "+khachHang);
 		return "layout/home";
 	}
 }

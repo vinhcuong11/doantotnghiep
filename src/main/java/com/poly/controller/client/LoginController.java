@@ -91,16 +91,18 @@ public class LoginController {
         Accounts userResponse = accountServ.getUser(userlogin.getUsername());
         LOGGER.info("com/poly/controller/client/LoginController.java - userResponse.getUsername:"+userResponse.getUsername());
         boolean loginStatus = bcrypt.matches(userlogin.getPassword(), userResponse.getPassword());
-        LOGGER.info("com/poly/controller/client/LoginController.java - Repo hash "+ userResponse.getPassword());
-        LOGGER.info("com/poly/controller/client/LoginController.java - Login hash "+ userlogin.getPassword());
-        LOGGER.info("com/poly/controller/client/LoginController.java - loginStatus"+loginStatus);
+        LOGGER.info("com/poly/controller/client/LoginController.java - Repo hash: "+ userResponse.getPassword());
+        LOGGER.info("com/poly/controller/client/LoginController.java - Login hash: "+ userlogin.getPassword());
+        LOGGER.info("com/poly/controller/client/LoginController.java - loginStatus: "+loginStatus);
         if (userResponse != null && loginStatus) {
             Role RoleUserResponse = userResponse.getRole();
             // tạo Sesstion tại Server
             session.set(SessionConstant.CURRENT_USER, userResponse);
             session.set(SessionConstant.CURRENT_ROLE, RoleUserResponse);
             LOGGER.info("RoleName: "+RoleUserResponse.getRoleName());
-            session.set(SessionConstant.JWT, tokenProvider.generateToken(customUser));
+            session.set(SessionConstant.JWT, tokenProvider.generateToken(customUser,RoleUserResponse));
+
+            LOGGER.info("com/poly/controller/client/LoginController.java - tokenProvider: "+ tokenProvider.generateToken(customUser,RoleUserResponse));
             session.set(SessionConstant.CURRENT_USER, userResponse);
             session.set(SessionConstant.ERROR, null);
             return "redirect:/foodshop";
@@ -133,9 +135,4 @@ public class LoginController {
             return "redirect:/foodshop/login/sign-up";
         }
     }
-
-    boolean areValuesAlike(String value1,String value2){
-        return value1.equals(value2);
-    }
-
 }

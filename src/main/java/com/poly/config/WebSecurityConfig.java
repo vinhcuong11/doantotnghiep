@@ -41,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+
 		http.csrf().disable();
 		
 		/*
@@ -50,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		 
 		 http.authorizeRequests().antMatchers("/admin/**").hasAuthority(RoleConst.ROLE_ADMIN);
 		 */
-		http.authorizeRequests().antMatchers("/admin/**").hasAuthority(RoleConst.ROLE_ADMIN);
+		http.authorizeRequests().antMatchers("/cart/wishlist").hasAuthority(RoleConst.ROLE_USER);
 		http.authorizeRequests().and().rememberMe()
 					.tokenRepository(this.persistentTokenRepository())
 					.tokenValiditySeconds(30*60);
@@ -58,10 +59,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().authorizeRequests()
 				.antMatchers("/foodshop",
 						"/foodshop/login",
-						"/foodshop/login/checkin",
-						"/cart/wishlist").permitAll() // Cho phep tat ca truy cap link nay
+						"/foodshop/login/checkin").permitAll() // Cho phep tat ca truy cap link nay
 				.anyRequest().authenticated(); // Cac link con lai thi phai xac thuc
-	
+
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 	

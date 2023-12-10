@@ -1,6 +1,11 @@
 package com.poly.jwt;
 
 
+import com.poly.controller.client.LoginController;
+import com.poly.entity.Role;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -11,10 +16,14 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import lombok.extern.slf4j.Slf4j;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 @Slf4j
 public class JwtTokenProvider {
+	private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenProvider.class);
 
 	// Doan JWT_SECRET nay chi co phia server duoc biet
 	private static final String JWT_SECRET = "springboot-t5";
@@ -23,12 +32,25 @@ public class JwtTokenProvider {
 	private static final long JWT_EXPIRATION = 604800000L;
 
 	// Tao jwt tu thong tin CustomUser
-	public String generateToken(CustomUser customUser) {
+	public String generateToken(CustomUser customUser,Role role) {
+		LOGGER.info("com/poly/jwt/JwtTokenProvider.java - generateToken: START");
+		if (customUser == null || role == null) {
+			LOGGER.error("Invalid input: customUser or role is null");
+			throw new IllegalArgumentException("Invalid input");
+		}
+
 		Date now = new Date();
+		Map<String, Object> myMap = new HashMap<>();
+		myMap.put("roles",role.getRoleName());
+		LOGGER.info("My: "+role.getRoleName());
 		Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION);
 		// Tao chuoi token tu username cua customUser
-		return Jwts.builder().setSubject(customUser.getUser().getUsername()).setIssuedAt(now).setExpiration(expiryDate)
+		return  Jwts.builder()
+				.setSubject(customUser.getUser().getUsername())
+				.setIssuedAt(now).setExpiration(expiryDate)
+				.addClaims(myMap)
 				.signWith(SignatureAlgorithm.HS512, JWT_SECRET).compact();
+
 	}
 
 	// Lay thong tin user tu chuoi token
