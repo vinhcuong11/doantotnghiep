@@ -56,7 +56,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.tokenValiditySeconds(30*60);
 		http.cors()
 				.and().authorizeRequests()
-				.antMatchers("/admin/**", "/home","/index", "/login", "/logout", "/sanpham/**", "/api/**","/cart/**", "/register","/registration").permitAll() // Cho phep tat ca truy cap link nay
+				.antMatchers("/foodshop",
+						"/foodshop/login",
+						"/foodshop/login/checkin",
+						"/cart/wishlist").permitAll() // Cho phep tat ca truy cap link nay
 				.anyRequest().authenticated(); // Cac link con lai thi phai xac thuc
 	
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -64,7 +67,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/foodshop/**", "/assets/**","/css/**", "/fonts/**", "/img/**", "/js/**","/script/**");
+		web.ignoring().antMatchers("/foodshop/**",
+				"/assets/**",
+				"/css/**",
+				"/fonts/**",
+				"/img/**",
+				"/js/**",
+				"/script/**",
+				"/layout/**");
 	}
 
 	@Bean

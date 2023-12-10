@@ -49,10 +49,10 @@ DROP TABLE IF EXISTS `account`;
 SET character_set_client = utf8mb4 ;
 CREATE TABLE `account` (
                            `accid` int(11) NOT NULL AUTO_INCREMENT,
-                           `roleid` int(11) NOT NULL,
+                           `roleid` int(11) NOT NULL DEFAULT 2,
                            `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
                            `username` varchar(100) NOT NULL,
-                           `password` varchar(10) NOT NULL,
+                           `password` varchar(255) NOT NULL,
                            `email` varchar(50) NOT NULL,
                            `image` varchar(50) DEFAULT NULL,
                            `phone_number` int(12) DEFAULT NULL,

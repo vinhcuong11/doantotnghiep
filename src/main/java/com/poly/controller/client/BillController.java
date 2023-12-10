@@ -1,5 +1,6 @@
 package com.poly.controller.client;
 
+import com.poly.common.SessionConstant;
 import com.poly.entity.Accounts;
 import com.poly.service.SessionDAO;
 import org.slf4j.Logger;
@@ -19,7 +20,7 @@ public class BillController {
     SessionDAO session;
     @GetMapping("")
     public String viewBill(Model model) {
-        Accounts khachHang = (Accounts) session.get("user");
+        Accounts khachHang = (Accounts) session.get(SessionConstant.CURRENT_USER);
         LOGGER.info("com/poly/controller/client/BillController.java - khachHang: "+khachHang);
         if(khachHang == null){
             LOGGER.info("com/poly/controller/client/BillController.java - checkNull");
